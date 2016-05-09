@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block title %} {{ title }}{% endblock %}
+{% block content %}
+    <main>
+        <header>List of Authors</header>
+        <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+        <table id="index-table">
+            {% for author in authors |sort(attribute='name') %}
+                <tr>
+                 <td><a href="/author/{{ author.id }}">{{ author.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock %}

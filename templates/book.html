@@ -1,0 +1,48 @@
+{% extends 'template.html' %}
+{% block title %} {{ book.title }} {% endblock %}
+{% block content %}
+    <main>
+        <header>{{ title }}</header>
+        <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+        <div id = "image">
+            {% if cover %}
+               <img src="http://covers.openlibrary.org/b/id/{{ cover }}-M.jpg">
+            {% endif %}
+        </div><br>
+
+        <table class="striped1">
+        <tbody>
+            <tr>
+                <th>Authors:</th>
+                <td>
+                    {% for author in authors %}
+                        <a href="/author/{{ author.id }}">{{ author.name }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+
+            {% if book.subjects %}
+                <tr>
+                    <th>Subjects</th>
+                    <td>
+                        {% for sub in book.subjects %}
+                            {{ sub }},
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endif %}
+
+            <tr>
+                <th>Editions</th>
+                <td>
+                    {% for edi in book.editions | sort(attribute='publish_date') %}
+                        <a href="/books/{{ book.id }}/editions/{{ edi.id }}">{{ edi.title }}.{{ edi.publish_date }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </main>
+{% endblock %}
+
+

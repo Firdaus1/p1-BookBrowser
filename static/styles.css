@@ -1,0 +1,69 @@
+html {
+    font-family: "Georgia", serif;
+    font-size: 16pt;
+    background-color: #9bdbeb;
+}
+
+h1, h2, h3 {
+  font-family: "Gill Sans MT", "Gill Sans", "Gillius", sans-serif;
+}
+
+header {
+    font-family: Engagement,cursive;
+    font-size: 2.0rem;
+    font-weight: normal;
+    text-align:center;
+    color: #fe8402;
+    background-color: #87e293;
+}
+
+a {
+    text-decoration: none;
+}
+
+.striped1 {
+    margin: 0 auto;
+    width: 100%
+}
+
+.striped1 tr:nth-child(even) {
+    background-color: #fff;
+}
+.striped1 tr:nth-child(odd) {
+    background-color: #C2F3FF;
+}
+
+.striped1 th {
+    text-align: left
+}
+
+#image {
+    text-align:center;
+}
+
+#index-table {
+    margin: 0 auto;
+    width: 50%
+}
+
+#index-table tr:nth-child(even) {
+    background-color: #fff;
+}
+#index-table tr:nth-child(odd) {
+    background-color: #C2F3FF;
+}
+
+#index-table th {
+    text-align: left
+}
+
+.shell {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  padding-left: 1ex;
+  padding-right: 1ex;
+}

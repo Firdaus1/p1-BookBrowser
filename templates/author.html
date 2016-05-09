@@ -1,0 +1,83 @@
+{% extends 'template.html' %}
+{% block title %} {{ author.name }}{% endblock %}
+{% block content %}
+    <main>
+        <header>{{ author.name }}</header>
+        <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+        <table class="striped1">
+            <tbody>
+                <tr>
+                    {% if author.personal_name %}
+                        <th>Personal name</th>
+                        <td>{{ author.personal_name }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                     {% if author.birth_date %}
+                         <th>Date of birth</th>
+                         <td>{{ author.birth_date }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if author.death_date %}
+                        <th>Date of death</th>
+                        <td>{{ author.death_date }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if author.alternate_names %}
+                        <th>Alternate names:</th>
+                        <td>
+                            {% for name in author.alternate_names %}
+                                {{ name | lower | capitalize }}
+                            {% endfor %}
+                        </td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if author.photos %}
+                        <th>Photos:</th>
+                        <td>{{ author.photos }}</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                {% if author.title %}
+                    <th>Title</th>
+                    <td>{{ author.title }}</td>
+                {% endif %}
+                </tr>
+                <tr>
+                    {% if author.links %}
+                        <th>Links:</th>
+                        {% for link in author.links %}
+                            <td><a href="{{ link.url }}">{{ link.url }}</a> from {{ link.title }}</td>
+                        {% endfor %}
+                    {% endif %}
+                </tr>
+                <tr>
+                {% if books %}
+                    <th>Books:</th>
+                    <td>
+                    {% for book in books | sort(attribute='title') %}
+                        <a href="/book/{{ book.id }}">{{ book.title }}</a>
+                    {% endfor %}
+                    </td>
+                {% endif %}
+                </tr>
+            </tbody>
+        </table>
+
+
+        {% if author.bio %}
+            <h3>Biography: </h3>
+            {% for para in author.bio %}
+                <p>
+                    {% autoescape off %}
+                    {{ para |escape|replace("\r\n\r\n", "<br>") }}
+                    {% endautoescape %}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+    </main>
+{% endblock %}

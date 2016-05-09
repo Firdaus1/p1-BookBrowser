@@ -1,0 +1,31 @@
+{% extends 'template.html' %}
+{% block content %}
+    <header>Project 1</header>
+    <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+    <main>
+        <table id="index-table">
+            <tbody>
+                <tr>
+                    <th>Number of books</th>
+                    <td>{{ bookCount }}</td>
+                </tr>
+                <tr>
+                    <th>Number of authors</th>
+                    <td>{{ authorCount }}</td>
+                </tr>
+                <tr>
+                    <th>Number of editions</th>
+                    <td>{{ editionCount }}</td>
+                </tr>
+                <tr>
+                    <th>List of Authors</th>
+                    <td><a href= "/authors/">/authors/</a></td>
+                </tr>
+                <tr>
+                    <th>List of Books</th>
+                    <td><a href= "/books/">/books/</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

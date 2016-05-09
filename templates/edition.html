@@ -1,0 +1,99 @@
+{% extends 'template.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <main>
+        <header>{{ edition.title }}</header>
+        <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+        <div id = "image">
+            {% if cover %}
+                <img src="http://covers.openlibrary.org/b/id/{{ cover }}-M.jpg">
+            {% endif %}
+        </div><br>
+
+        <table class="striped1">
+            <tbody>
+                {% if edition.publish_date %}
+                    <tr>
+                        <th>Date published</th>
+                        <td> {{ edition.publish_date }}</td>
+                    </tr>
+                {% endif %}
+
+                {% if edition.page %}
+                    <tr>
+                        <th>Page</th>
+                        <td>{{ edition.page }}</td>
+                    </tr>
+                {% endif %}
+
+                {% if edition.subtitle %}
+                    <tr>
+                        <th>Subtitle</th>
+                        <td>{{ edition.subtitle }}</td>
+                    </tr>
+                {% endif %}
+
+                <tr>
+                    <th>Authors</th>
+                    <td>
+                        {% for author in authors %}
+                        <a href="/author/{{ author.id }}">{{ author.name }}</a>
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                {% if edition.subjects %}
+                    <tr>
+                        <th>Subjects</th>
+                        <td>
+                            {% for sub in edition.subjects %}
+                                <li>{{ sub }}</li>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+
+                {% if edition.lc_class %}
+                    <tr>
+                        <th>lc_class</th>
+                        <td>
+                            {% for foo in edition.lc_class %}
+                                {{ foo }} <br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+
+
+                {% if edition.isbn_10 %}
+                    <tr>
+                        <th>ISBN Number</th>
+                        <td>{{ edition.isbn_10 }}</td>
+                    </tr>
+                {% endif %}
+
+                {% if edition.isbn_13 %}
+                    <tr>
+                        <th>ISBN 13 Number</th>
+                        <td>{{ edition.isbn_13 }}</td>
+                    </tr>
+                {% endif %}
+
+                {% if edition.publishers %}
+                    <tr>
+                        <th>Published by</th>
+                        <td>
+                            {% for foo in edition.publishers %}
+                                {{ for }},
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+
+            </tbody>
+        </table>
+
+        <p><a href="/book/{{ bid }}">Back to the book</a></p>
+    </main>
+{% endblock %}
+

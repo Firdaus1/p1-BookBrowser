@@ -1,0 +1,15 @@
+{% extends 'template.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <main>
+        <header>List of Books</header>
+        <img class="clearfix RespondImage100 line" width="100%" height="12" src="images/whiteline.png"><br><br>
+        <table class="striped1">
+            {% for book in books | sort(attribute='title') %}
+                <tr>
+                    <td><a href="/book/{{ book.id }}">{{ book.title }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock %}
